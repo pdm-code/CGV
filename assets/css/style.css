@@ -21,7 +21,7 @@
   right: 10px;
   width: 16px;
   height: 16px;
-  background-image: url(/assets/img/btn_ad_close.png);
+  background-image: url(../img/btn_ad_close.png);
 }
 /* //ad-top */
 
@@ -250,7 +250,7 @@
   color: #343434;
   line-height: 1.429em;
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.8) url(/assets/img/arrowR_8x13.png)
+  background: rgba(255, 255, 255, 0.8) url(../img/arrowR_8x13.png)
     calc(100% - 11px) center / 8px 13px scroll no-repeat;
 }
 
@@ -325,7 +325,7 @@
   border: 1px solid #e2e2e2;
   border-radius: 15px;
   box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
-  background-image: url(/assets/img/arrowR_8x13.png);
+  background-image: url(../img/arrowR_8x13.png);
   background-repeat: no-repeat;
   background-size: 8px 13px;
   background-position: calc(100% - 7px) center; /* x축 y축*/
@@ -384,7 +384,7 @@
   border: 1px solid #e2e2e2;
   border-radius: 15px;
   box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
-  background-image: url(/assets/img/arrowR_8x13.png);
+  background-image: url(../img/arrowR_8x13.png);
   background-repeat: no-repeat;
   background-size: 8px 13px;
   background-position: calc(100% - 7px) center; /* x축 y축*/
@@ -475,7 +475,7 @@
   border: 1px solid #e2e2e2;
   border-radius: 15px;
   box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
-  background-image: url(/assets/img/arrowR_8x13.png);
+  background-image: url(../img/arrowR_8x13.png);
   background-repeat: no-repeat;
   background-size: 8px 13px;
   background-position: calc(100% - 7px) center; /* x축 y축*/
