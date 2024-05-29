@@ -20,8 +20,8 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     $(document).ready(function(){
-      // moviechart-slide
-      const moviechartswiper = new Swiper('.moviechart-swiper', {
+      // 무비차트
+      const moviechartswiper = new Swiper('#moviechart-list', {
         slidesPerView: 5,
         slidesPerGroup: 5,
         spaceBetween: 32,
@@ -32,6 +32,40 @@
           prevEl: '.moviechart-swiper .swiper-button-prev',
         },
       });
+
+      //상영예정작
+      const filmswiper = new Swiper('#film-list', {
+        slidesPerView: 5,
+        slidesPerGroup: 5,
+        spaceBetween: 32,
+        direction: 'horizontal',
+        // Navigation arrows
+        navigation: {
+          nextEl: '.moviechart-swiper .swiper-button-next',
+          prevEl: '.moviechart-swiper .swiper-button-prev',
+        },
+      });
+
+      $(".film").on("click", function(){
+        $("#film-list").show()
+        $("#moviechart-list").hide()
+        $(".moviechart").css("color", "#666")
+        $(".moviechart").css("font-weight", "400")
+        $(this).css("color", "#222")
+        $(this).css("font-weight", "700")
+      });
+
+      $(".moviechart").on("click", function(){
+        $("#moviechart-list").show()
+        $("#film-list").hide()
+        $(".film").css("color", "#666")
+        $(".film").css("font-weight", "400")
+        $(this).css("color", "#222")
+        $(this).css("font-weight", "700")
+      });
+
+      // nav-fixed
+      
 
       // event-swiper
       const eventswiper = new Swiper('.evevt-swiper', {
@@ -116,6 +150,27 @@
         </div>
       </div>
     </nav>
+    <div class="nav-fixed">
+      <div class="container">
+        <a href="#">
+          <img src="https://img.cgv.co.kr/R2014/images/common/logo/logoWhite.png" alt="CGV">
+        </a>
+        <ul>
+          <li><a href="#">영화</a></li>
+          <li><a href="#">극장</a></li>
+          <li><a href="#">예매</a></li>
+          <li><a href="#">스토어</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">혜택</a></li>
+        </ul>
+        <div>
+          <input type="text">
+          <button type="button">
+            <img src="assets/img/search_w.png" alt="검색">
+          </button>
+        </div>
+      </div>
+    </div>
   </header>
   <!-- //header -->
   <section class="video-wrap">
@@ -142,12 +197,13 @@
     <div class="container">
       <div class="moviechart-film-wrap">
         <div>
-          <a href="#" class="moviehcart">무비차트</a>
+          <a href="#" class="moviechart">무비차트</a>
           <a href="#" class="film">상영예정작</a>
         </div>
         <a href="#" class="viewall">전체보기</a>
       </div>
-      <div class="moviechart-swiper">
+      <!-- //moviechart-film-wrap -->
+      <div class="moviechart-swiper" id="moviechart-list">
         <ul class="swiper-wrapper">
           <li class="swiper-slide">
             <div class="img-wrap">
@@ -402,6 +458,133 @@
         <div class="swiper-navi swiper-button-prev"></div>
         <div class="swiper-navi swiper-button-next"></div>
       </div>
+      <!-- //무비차트 -->
+      <div class="moviechart-swiper" id="film-list">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide">
+            <div class="img-wrap">
+              <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88242/88242_320.jpg" alt="[토커바웃미술관]서울 편">
+              <div class="movieAgeLimit-wrap">
+                <img src="assets/img/15.svg" alt="15">
+                <span>D - 1</span>
+              </div>
+              <span class="img-num">1</span>
+              <div class="view-booking-wrap">
+                <a href="#" class="view-detail">상세보기</a>
+                <a href="#" class="booking">예매하기</a>
+              </div>
+            </div>
+            <strong>[토커바웃미술관]서울 편</strong>
+            <div class="advanceRate-wrap">
+              <img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldenegggreat.png" alt="Golden Egg great">
+              <span>?</span>
+              <span>예매율 0.0%</span>
+            </div>
+          </li>
+          <li class="swiper-slide">
+            <div class="img-wrap">
+              <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88214/88214_320.jpg" alt="극장판 하이큐!! 쓰레기장의 결전">
+              <div class="movieAgeLimit-wrap">
+                <img src="assets/img/all.svg" alt="ALL">
+                <span>D - 2</span>
+              </div>
+              <span class="img-num">2</span>
+              <div class="view-booking-wrap">
+                <a href="#" class="view-detail">상세보기</a>
+                <a href="#" class="booking">예매하기</a>
+              </div>
+            </div>
+            <strong>극장판 하이큐!! 쓰레기장의 결전</strong>
+            <div class="advanceRate-wrap">
+              <img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldenegggreat.png" alt="Golden Egg great">
+              <span>99%</span>
+              <span>예매율 33.3%</span>
+            </div>
+          </li>
+          <li class="swiper-slide">
+            <div class="img-wrap">
+              <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88183/88183_320.jpg" alt="가필드 더 무비">
+              <div class="movieAgeLimit-wrap">
+                <img src="assets/img/all.svg" alt="ALL">
+                <span>D - 2</span>
+              </div>
+              <span class="img-num">3</span>
+              <div class="view-booking-wrap">
+                <a href="#" class="view-detail">상세보기</a>
+                <a href="#" class="booking">예매하기</a>
+              </div>
+            </div>
+            <strong>가필드 더 무비</strong>
+            <div class="advanceRate-wrap">
+              <img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="Golden Egg Preegg">
+              <span>99%</span>
+              <span>예매율 9.4%</span>
+            </div>
+          </li>
+          <li class="swiper-slide">
+            <div class="img-wrap">
+              <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88226/88226_320.jpg" alt="그녀가 죽었다">
+              <div class="movieAgeLimit-wrap">
+                <img src="assets/img/15.svg" alt="15">
+                <span>D - 2</span>
+              </div>
+              <span class="img-num">4</span>
+              <div class="view-booking-wrap">
+                <a href="#" class="view-detail">상세보기</a>
+                <a href="#" class="booking">예매하기</a>
+              </div>
+            </div>
+            <strong>그녀가 죽었다</strong>
+            <div class="advanceRate-wrap">
+              <img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="Golden Egg Preegg">
+              <span>99%</span>
+              <span>예매율 8.6%</span>
+            </div>
+          </li>
+          <li class="swiper-slide">
+            <div class="img-wrap">
+              <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87957/87957_320.jpg" alt="이프-상상의 친구">
+              <div class="movieAgeLimit-wrap">
+                <img src="assets/img/all.svg" alt="ALL">
+              </div>
+              <span class="img-num">5</span>
+              <div class="view-booking-wrap">
+                <a href="#" class="view-detail">상세보기</a>
+                <a href="#" class="booking">예매하기</a>
+              </div>
+            </div>
+            <strong>이프-상상의 친구</strong>
+            <div class="advanceRate-wrap">
+              <img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="Golden Egg Preegg">
+              <span>99%</span>
+              <span>예매율 2.5%</span>
+            </div>
+          </li>
+          <li class="swiper-slide">
+            <div class="img-wrap">
+              <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88200/88200_320.jpg" alt="(라이브뷰잉) 앙상블 스타즈!! 드림라이브 8th 투어 - Praesepe#Cancer (도쿄)">
+              <div class="movieAgeLimit-wrap">
+                <img src="assets/img/12.svg" alt="12">
+                <span>D - 11</span>
+              </div>
+              <span class="img-num">6</span>
+              <div class="view-booking-wrap">
+                <a href="#" class="view-detail">상세보기</a>
+                <a href="#" class="booking">예매하기</a>
+              </div>
+            </div>
+            <strong>(라이브뷰잉) 앙상블 스타즈!! 드림라이브 8th 투어 - Praesepe#Cancer (도쿄)</strong>
+            <div class="advanceRate-wrap">
+              <img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="Golden Egg Preegg">
+              <span>99%</span>
+              <span>예매율 1.1%</span>
+            </div>
+          </li>
+        </ul>
+        <div class="swiper-navi swiper-button-prev"></div>
+        <div class="swiper-navi swiper-button-next"></div>
+      </div>
+      <!-- // 상영예정작 -->
     </div>
   </section>
   <!-- //moviechart-wrap -->

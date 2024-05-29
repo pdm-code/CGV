@@ -174,6 +174,110 @@
 }
 
 /* //.header .nav-search */
+
+.header .nav-fixed {
+  position: fixed;
+  top: 0;
+  background-image: linear-gradient(to right, rgb(215, 67, 87), rgb(241, 79, 58) 59%, rgb(239, 100, 47));
+  padding: 10px 0;
+  z-index: 7;
+  width: 100%;
+}
+
+.header .nav-fixed .container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+}
+
+.header .nav-fixed .container > a  {
+  width: 70px;
+  height: 32px;
+  margin-top: -4px;
+}
+
+.header .nav-fixed .container > a img {
+  width: 100%;
+  height: 100%;
+}
+
+.header .nav-fixed .container ul {
+  display: flex;
+  flex: 1;
+  margin-left: 50px;
+}
+
+.header .nav-fixed .container ul li {
+  padding: 8px 25px;
+}
+
+.header .nav-fixed .container ul li:nth-of-type(1) {
+  padding-left: 0;
+}
+
+.header .nav-fixed .container ul li a {
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.500em;
+}
+
+.header .nav-fixed .container > div input {
+  width: 180px;
+  height: auto;
+  border: none;
+  font-size: 16px;
+  line-height: 1.500em;
+  margin-left: 6px;
+  background-color: transparent;
+}
+
+.header .nav-fixed .container > div {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.header .nav-fixed .container > div::before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 1px;
+  height: 20px;
+  background-color: #000;
+  opacity: 0.2;
+}
+
+.header .nav-fixed .container > div::after {
+  position: absolute;
+  right: 0;
+  content: "";
+  display: block;
+  width: 1px;
+  height: 20px;
+  background-color: #000;
+  opacity: 0.2;
+}
+
+
+.header .nav-fixed .container > div button {
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+}
+
+.header .nav-fixed .container > div button img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+
 /* //header */
 
 .video-wrap {
@@ -290,12 +394,12 @@
   line-height: 1.423em;
 }
 
-.moviechart-wrap .moviechart-film-wrap div a.moviehcart {
+.moviechart-wrap .moviechart-film-wrap div a.moviechart {
   font-weight: 700;
   color: #222;
 }
 
-.moviechart-wrap .moviechart-film-wrap div a.moviehcart::after {
+.moviechart-wrap .moviechart-film-wrap div a.moviechart::after {
   position: absolute;
   top: 12px;
   left: 115px;
@@ -465,6 +569,10 @@
   text-align: center;
 }
 
+.moviechart-wrap .moviechart-swiper ul li .view-booking-wrap a:hover {
+  opacity: 0.8;
+}
+
 .moviechart-wrap .moviechart-swiper ul li .view-booking-wrap .view-detail {
   background-color: #fff;
 }
@@ -521,15 +629,45 @@
   transform: rotate(180deg);
   right: -20px;
   box-shadow: -2px -2px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 6;
 }
 
 .moviechart-wrap .moviechart-swiper .swiper-button-prev {
   left: -20px;
+  z-index: 6;
 }
 
 .moviechart-wrap .moviechart-swiper .swiper-button-disabled {
   display: none;
 }
+
+.moviechart-wrap #film-list {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* //moviechart-wrap */
 
@@ -645,11 +783,13 @@
   transform: rotate(180deg);
   right: -20px;
   box-shadow: -2px -2px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 6;
 }
 
 .event-wrap .container .event-content .swiper-button-prev {
   left: -20px;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 6;
 }
 
 .event-wrap .container .event-content .swiper-button-disabled {
@@ -1046,6 +1186,11 @@
   line-height: 1.429em;
   background-color: #9e9e9e;
   vertical-align: top;
+}
+
+
+.footer .container .footer-company-wrap .familysiteTitle {
+  display: none;
 }
 
 /* //footer */
