@@ -21,7 +21,7 @@
   <script>
     $(document).ready(function(){
       // 무비차트
-      const moviechartswiper = new Swiper('#moviechart-list', {
+      var moviechartswiper = new Swiper('#moviechart-list', {
         slidesPerView: 5,
         slidesPerGroup: 5,
         spaceBetween: 32,
@@ -34,7 +34,7 @@
       });
 
       //상영예정작
-      const filmswiper = new Swiper('#film-list', {
+      var filmswiper = new Swiper('#film-list', {
         slidesPerView: 5,
         slidesPerGroup: 5,
         spaceBetween: 32,
@@ -47,24 +47,36 @@
       });
 
       $(".film").on("click", function(){
-        $("#film-list").show()
-        $("#moviechart-list").hide()
-        $(".moviechart").css("color", "#666")
-        $(".moviechart").css("font-weight", "400")
-        $(this).css("color", "#222")
-        $(this).css("font-weight", "700")
+        $("#film-list").show();
+        $("#moviechart-list").hide();
+        $(".moviechart").css("color", "#666");
+        $(".moviechart").css("font-weight", "400");
+        $(this).css("color", "#222");
+        $(this).css("font-weight", "700");
       });
 
       $(".moviechart").on("click", function(){
-        $("#moviechart-list").show()
-        $("#film-list").hide()
-        $(".film").css("color", "#666")
-        $(".film").css("font-weight", "400")
-        $(this).css("color", "#222")
-        $(this).css("font-weight", "700")
+        $("#moviechart-list").show();
+        $("#film-list").hide();
+        $(".film").css("color", "#666");
+        $(".film").css("font-weight", "400");
+        $(this).css("color", "#222");
+        $(this).css("font-weight", "700");
       });
 
-      // nav-fixed
+      // nav-fixed (스크롤 이벤트)
+      $(window).scroll(function(){
+          var headerTop = $("header").offset().top;           // header의 화면 위쪽에서부터의 거리
+          var headerHeight = $("header").outerHeight(true);   // header의 외부 높이(true = 마진을 포함한 값)
+          var fixedH = headerTop + headerHeight;              // 고정 헤더가 시작되는 위치 = header의 끝 부분
+          var currentScrollTop = $(document).scrollTop();     // 현재 스크롤 위치
+          
+          if(currentScrollTop >= fixedH) {    // 현재 스크롤 위치가 고정 헤더의 시작 위치보다 크거나 같다면
+              $(".nav-fixed").show();
+          } else {
+            $(".nav-fixed").hide();
+          }
+      });
       
 
       // event-swiper
@@ -79,13 +91,23 @@
           prevEl: '.evevt-swiper .swiper-button-prev',
         },
       });
+
+      // 특별관 hover 이벤트 
+      $(".specialhall-content ul li").mouseenter(function () { 
+        var index = $(this).index() + 1;
+
+        $(".specialhall-content .specialhall-img").css("background-image", "url(assets/img/specialHall_content" + index + ".png)");
+
+        $(".specialhall-content ul li").removeClass("active");
+        $(this).addClass("active");
+      });
     });
   </script>
 </head>
 <body>
   <div class="ad-top">
     <div class="container">
-      <a href="#">
+      <a href="#none">
         <img src="assets/img/haikyuu.jpg" alt="하이큐">
       </a>
       <button type="button"></button>
@@ -95,36 +117,36 @@
   <header class="header">
     <div class="container">
       <div class="logo-wrap">
-        <a href="#">
+        <a href="#none">
           <img src="assets/img/logoRed.png" alt="CGV">
         </a>
         <p>CULTUREPLEX</p>
       </div>
       <div class="memberinfo-wrap">
-        <a href="#">
+        <a href="#none">
           <img src="assets/img/card1.png" alt="현대카드 6천 M포인트 사용!">
         </a>
         <ul>
           <li>
-            <a href="#">
+            <a href="#none">
               <img src="assets/img/loginPassword.png" alt="로그인">
               <span>로그인</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <img src="assets/img/loginJoin.png" alt="회원가입">
               <span>회원가입</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <img src="assets/img/loginMember.png" alt="MY CGV">
               <span>MY CGV</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <img src="assets/img/loginCustomer.png" alt="고객센터">
               <span>고객센터</span>
             </a>
@@ -135,12 +157,12 @@
     <nav class="nav-wrap">
       <div class="container">
         <div class="nav-list">
-          <a href="#">영화</a>
-          <a href="#">극장</a>
-          <a href="#">예매</a>
-          <a href="#">스토어</a>
-          <a href="#">이벤트</a>
-          <a href="#">혜택</a>
+          <a href="#none">영화</a>
+          <a href="#none">극장</a>
+          <a href="#none">예매</a>
+          <a href="#none">스토어</a>
+          <a href="#none">이벤트</a>
+          <a href="#none">혜택</a>
         </div>
         <div class="nav-search">
           <input type="text">
@@ -152,16 +174,16 @@
     </nav>
     <div class="nav-fixed">
       <div class="container">
-        <a href="#">
+        <a href="#none">
           <img src="https://img.cgv.co.kr/R2014/images/common/logo/logoWhite.png" alt="CGV">
         </a>
         <ul>
-          <li><a href="#">영화</a></li>
-          <li><a href="#">극장</a></li>
-          <li><a href="#">예매</a></li>
-          <li><a href="#">스토어</a></li>
-          <li><a href="#">이벤트</a></li>
-          <li><a href="#">혜택</a></li>
+          <li><a href="#none">영화</a></li>
+          <li><a href="#none">극장</a></li>
+          <li><a href="#none">예매</a></li>
+          <li><a href="#none">스토어</a></li>
+          <li><a href="#none">이벤트</a></li>
+          <li><a href="#none">혜택</a></li>
         </ul>
         <div>
           <input type="text">
@@ -182,7 +204,7 @@
         <p class="content-title">악마와의토크쇼</p>
         <p class="content-text">47년만에 공개 생중계 공포<br>사상 최악의 방송 사고!</p>
         <div class="video-controls">
-          <a href="#">상세보기</a>
+          <a href="#none">상세보기</a>
           <button type="button">
             <img src="assets/img/pause.png" alt="재생버튼">
           </button>
@@ -197,10 +219,10 @@
     <div class="container">
       <div class="moviechart-film-wrap">
         <div>
-          <a href="#" class="moviechart">무비차트</a>
-          <a href="#" class="film">상영예정작</a>
+          <a href="#none" class="moviechart">무비차트</a>
+          <a href="#none" class="film">상영예정작</a>
         </div>
-        <a href="#" class="viewall">전체보기</a>
+        <a href="#none" class="viewall">전체보기</a>
       </div>
       <!-- //moviechart-film-wrap -->
       <div class="moviechart-swiper" id="moviechart-list">
@@ -218,8 +240,8 @@
                 <img src="https://img.cgv.co.kr/R2014/images/common/logo/forDX_white.png" alt="forDX">
               </div>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>극장판 하이큐!! 쓰레기장의 결전</strong>
@@ -237,8 +259,8 @@
               </div>
               <span class="img-num">2</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>범죄도시4</strong>
@@ -257,8 +279,8 @@
               </div>
               <span class="img-num">3</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>가필드 더 무비</strong>
@@ -277,8 +299,8 @@
               </div>
               <span class="img-num">4</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>그녀가 죽었다</strong>
@@ -301,8 +323,8 @@
                 <img src="https://img.cgv.co.kr/R2014/images/common/logo/screenx_white.png" alt="screenx">
               </div>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>혹성탈출-새로운 시대</strong>
@@ -325,8 +347,8 @@
                 <img src="https://img.cgv.co.kr/R2014/images/common/logo/forDX_white.png" alt="forDX">
               </div>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>퓨리오사-매드맥스 사가</strong>
@@ -345,8 +367,8 @@
               </div>
               <span class="img-num">7</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>설계자</strong>
@@ -365,8 +387,8 @@
               </div>
               <span class="img-num">8</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>청춘18x2 너에게로 이어지는 길</strong>
@@ -384,8 +406,8 @@
               </div>
               <span class="img-num">9</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>악마와의 토크쇼</strong>
@@ -404,8 +426,8 @@
               </div>
               <span class="img-num">10</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>이프-상상의 친구</strong>
@@ -424,8 +446,8 @@
               </div>
               <span class="img-num">11</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>(라이브뷰잉) 앙상블 스타즈!! 드림라이브 8th 투어 - Praesepe#Cancer (도쿄)</strong>
@@ -443,8 +465,8 @@
               </div>
               <span class="img-num">12</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>꼬마참새 리차드-신비한 보석 탐험대</strong>
@@ -470,8 +492,8 @@
               </div>
               <span class="img-num">1</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>[토커바웃미술관]서울 편</strong>
@@ -490,8 +512,8 @@
               </div>
               <span class="img-num">2</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>극장판 하이큐!! 쓰레기장의 결전</strong>
@@ -510,8 +532,8 @@
               </div>
               <span class="img-num">3</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>가필드 더 무비</strong>
@@ -530,8 +552,8 @@
               </div>
               <span class="img-num">4</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>그녀가 죽었다</strong>
@@ -549,8 +571,8 @@
               </div>
               <span class="img-num">5</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>이프-상상의 친구</strong>
@@ -569,8 +591,8 @@
               </div>
               <span class="img-num">6</span>
               <div class="view-booking-wrap">
-                <a href="#" class="view-detail">상세보기</a>
-                <a href="#" class="booking">예매하기</a>
+                <a href="#none" class="view-detail">상세보기</a>
+                <a href="#none" class="booking">예매하기</a>
               </div>
             </div>
             <strong>(라이브뷰잉) 앙상블 스타즈!! 드림라이브 8th 투어 - Praesepe#Cancer (도쿄)</strong>
@@ -596,49 +618,49 @@
           <button>
             <img src="assets/img/stop.png" alt="정지버튼">
           </button>
-          <a href="#">전체보기</a>
+          <a href="#none">전체보기</a>
         </div>
       </div>
       <div class="event-content">
         <div class="evevt-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide evevt-slide">
-              <a href="#">
+              <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/40413/17144588012630.jpg" alt="[혹성탈출-새로운시대]IMAX 포스터">
                 <strong>[혹성탈출-새로운시대]IMAX 포스터</strong>
                 <span>2024.04.30~2024.05.14</span>
               </a>
             </div>
             <div class="swiper-slide">
-              <a href="#">
+              <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/40412/17144613187210.jpg" alt="[혹성탈출-새로운시대]4DX 포스터">
                 <strong>[혹성탈출-새로운시대]4DX 포스터</strong>
                 <span>2024.04.30~2024.05.14</span>
               </a>
             </div>
             <div class="swiper-slide evevt-slide">
-              <a href="#">
+              <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/40411/17144615086560.jpg" alt="[혹성탈출-새로운시대]SCREENX 포스터">
                 <strong>[혹성탈출-새로운시대]SCREENX 포스터</strong>
                 <span>2024.05.01~2024.05.14</span>
               </a>
             </div>
             <div class="swiper-slide evevt-slide">
-              <a href="#">
+              <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/39599/17059006425860.jpg" alt="내 통신사 혜택 확인하고CGV 영화 할인 받자!">
                 <strong>내 통신사 혜택 확인하고CGV 영화 할인 받자!</strong>
                 <span>2024.02.01~2026.01.31</span>
               </a>
             </div>
             <div class="swiper-slide evevt-slide">
-              <a href="#">
+              <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/40509/17152994005120.jpg" alt="[극장판 하이큐!!] IMAXN차 관람 이벤트">
                 <strong>[극장판 하이큐!!] IMAXN차 관람 이벤트</strong>
                 <span>2024.05.10~2024.05.21</span>
               </a>
             </div>
             <div class="swiper-slide evevt-slide">
-              <a href="#">
+              <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/40338/17131432126120.jpg" alt="[MOINTSX인티N] 사유하는 목요일 (김호영)">
                 <strong>[MOINTSX인티N] 사유하는 목요일 (김호영)</strong>
                 <span>2024.05.13~2024.06.11</span>
@@ -657,31 +679,31 @@
     <div class="container">
       <div class="specialhall-header">
         <p>특별관</p>
-        <a href="#">전체보기</a>
+        <a href="#none">전체보기</a>
       </div>
       <div class="specialhall-content">
-        <a href="#"></a>
+        <a href="#none" class="specialhall-img"></a>
         <ul>
           <li>
-            <a href="#">
+            <a href="#none">
               <p>SUITE CINEMA</p>
               <span>#호텔 컨셉의 프리미엄관</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <p>CINE & LIVINGROOM</p>
               <span>#신개념 소셜 상영관</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <p>4DX</p>
               <span>#모션시트 #오감체험</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <p>CINE de CHEF</p>
               <span>#쉐프가 있는 영화관</span>
             </a>
@@ -696,18 +718,18 @@
       <div class="package">
         <div>
           <p>패키지</p>
-          <a href="#">더보기</a>
+          <a href="#none">더보기</a>
         </div>
         <div>
-          <a href="#">
+          <a href="#none">
             <img src="https://img.cgv.co.kr/GiftStore/Product/Pc/List/16778218049340.jpg" alt="우리 패키지">
             <span>우리 패키지<br><strong>61,000원</strong></span>
           </a>
-          <a href="#">
+          <a href="#none">
             <img src="https://img.cgv.co.kr/GiftStore/Product/Pc/List/16778214176450.jpg" alt="나랑 너 패키지">
             <span>나랑 너 패키지<br><strong>34,000원</strong></span>
           </a>
-          <a href="#">
+          <a href="#none">
             <img src="https://img.cgv.co.kr/GiftStore/Product/Pc/List/16778206767040.jpg" alt="좋은 날 패키지">
             <span>좋은 날 패키지<br><strong>18,000원</strong></span>
           </a>
@@ -716,18 +738,18 @@
       <div class="package">
         <div>
           <p>영화관람권</p>
-          <a href="#">더보기</a>
+          <a href="#none">더보기</a>
         </div>
         <div>
-          <a href="#">
+          <a href="#none">
             <img src="https://img.cgv.co.kr/GiftStore/Product/Pc/List/16777513183750.jpg" alt="CGV 영화관람권">
             <span>CGV 영화관람권<br><strong>13,000원</strong></span>
           </a>
-          <a href="#">
+          <a href="#none">
             <img src="https://img.cgv.co.kr/GiftStore/Product/Pc/List/16104445886810.jpg" alt="IMAX 영화관람권">
             <span>IMAX 영화관람권<br><strong>18,000원</strong></span>
           </a>
-          <a href="#">
+          <a href="#none">
             <img src="https://img.cgv.co.kr/GiftStore/Product/Pc/List/16105061088530.jpg" alt="4DX 영화관람권">
             <span>4DX 영화관람권<br><strong>19,000원</strong></span>
           </a>
@@ -736,18 +758,18 @@
       <div class="package">
         <div>
           <p>기프트카드</p>
-          <a href="#">더보기</a>
+          <a href="#none">더보기</a>
         </div>
         <div>
-          <a href="#">
+          <a href="#none">
             <img src="https://img.cgv.co.kr/GiftStore/Product/Pc/List/15814124358590.jpg" alt="PACONNIE A형">
             <span>PACONNIE A형<br><strong>금액충전형</strong></span>
           </a>
-          <a href="#">
+          <a href="#none">
             <img src="https://img.cgv.co.kr/GiftStore/Product/Pc/List/15814158039890.jpg" alt="PACONNIE B형">
             <span>PACONNIE B형<br><strong>금액충전형</strong></span>
           </a>
-          <a href="#">
+          <a href="#none">
             <img src="https://img.cgv.co.kr/GiftStore/Product/Pc/List/15814162227570.jpg" alt="PACONNIE C형">
             <span>PACONNIE C형<br><strong>금액충전형</strong></span>
           </a>
@@ -762,8 +784,8 @@
         <div class="notice-custsv">
           <div class="notice">
             <p>공지사항</p>
-            <a href="#">[행사/이벤트][웡카] 4DX 신규 초콜릿향 진행극장 변경 안내 (1/31~2/6)</a>
-            <a href="#">더보기</a>
+            <a href="#none">[행사/이벤트][웡카] 4DX 신규 초콜릿향 진행극장 변경 안내 (1/31~2/6)</a>
+            <a href="#none">더보기</a>
           </div>
           <div class="custsv-wrap">
             <p>고객센터</p>
@@ -774,9 +796,9 @@
             </div>
           </div>
           <div class="notice-footer">
-            <a href="#">FAQ</a>
-            <a href="#">1:1 문의</a>
-            <a href="#">대관/단체 문의</a>
+            <a href="#none">FAQ</a>
+            <a href="#none">1:1 문의</a>
+            <a href="#none">대관/단체 문의</a>
           </div>
         </div>
         <div class="app-down">
@@ -788,7 +810,7 @@
       </div>
       <!-- //noticeClient-wrap -->
       <div class="notice-banner">
-        <a href="#">
+        <a href="#none">
           <img src="https://adimg.cgv.co.kr/images/202308/CGV/wooricard/226x259.png" alt="광고-우리은행">
         </a>
       </div>
@@ -799,18 +821,18 @@
   <footer class="footer">
     <div class="container">
       <ul>
-        <li><a href="#">회사소개</a></li>
-        <li><a href="#">지속가능경영</a></li>
-        <li><a href="#">IR</a></li>
-        <li><a href="#">채용정보</a></li>
-        <li><a href="#">광고/제휴/출점문의</a></li>
-        <li><a href="#">이용약관</a></li>
-        <li><a href="#">편성기준</a></li>
-        <li><a href="#"><strong>개인정보처리방침</strong></a></li>
-        <li><a href="#">법적고지</a></li>
-        <li><a href="#">이메일주소무단수집거부</a></li>
-        <li><a href="#">윤리경영</a></li>
-        <li><a href="#">사이버감사실</a></li>
+        <li><a href="#none">회사소개</a></li>
+        <li><a href="#none">지속가능경영</a></li>
+        <li><a href="#none">IR</a></li>
+        <li><a href="#none">채용정보</a></li>
+        <li><a href="#none">광고/제휴/출점문의</a></li>
+        <li><a href="#none">이용약관</a></li>
+        <li><a href="#none">편성기준</a></li>
+        <li><a href="#none"><strong>개인정보처리방침</strong></a></li>
+        <li><a href="#none">법적고지</a></li>
+        <li><a href="#none">이메일주소무단수집거부</a></li>
+        <li><a href="#none">윤리경영</a></li>
+        <li><a href="#none">사이버감사실</a></li>
       </ul>
       <div class="footer-info-wrap">
         <div class="footer-info">
@@ -823,7 +845,7 @@
             <dt>통신판매업신고번호</dt>
             <dd class="dot_none">
               <span>2017-서울용산-0662</span>
-              <a href="#">사업자정보확인</a>
+              <a href="#none">사업자정보확인</a>
             </dd>
             
           </dl>          
@@ -864,7 +886,7 @@
               <option value="">CJ CGV</option>
             </optgroup>
           </select>
-          <a href="#">GO</a>
+          <a href="#none">GO</a>
         </div>     
       </div>
     </div>

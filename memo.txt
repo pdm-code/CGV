@@ -1,0 +1,11 @@
+jquery
+.index() - 해당요소가 몇번쨰인지 확인(0부터 시작)
+
+
+var - 변수명 지정(변수명은 같을 수 없다.)
+ex) var index = $(this).index()+1;
+
+변수명 넣을때 
+
+"문자" + 변수명 + "문자"
+ex) $(".specialhall-wrap .container .specialhall-content .specialhall-img").css("background-image", "url(assets/img/specialHall_content" + 변수명 + ".png)")
