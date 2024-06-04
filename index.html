@@ -20,6 +20,13 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     $(document).ready(function(){
+      //비디오 정지/재생 이벤트
+
+
+
+
+
+
       // 무비차트
       var moviechartswiper = new Swiper('#moviechart-list', {
         slidesPerView: 5,
@@ -79,18 +86,23 @@
       });
       
 
-      // event-swiper
-      const eventswiper = new Swiper('.evevt-swiper', {
+      // 이벤트 스와이퍼
+      var eventswiper = new Swiper('.event-swiper', {
+        autoplay: {
+          delay: 3000
+        },
         slidesPerView: 3,
         slidesPerGroup: 3,
         spaceBetween: 24,
         direction: 'horizontal',
         // Navigation arrows
         navigation: {
-          nextEl: '.evevt-swiper .swiper-button-next',
-          prevEl: '.evevt-swiper .swiper-button-prev',
+          nextEl: '.event-swiper .swiper-button-next',
+          prevEl: '.event-swiper .swiper-button-prev',
         },
       });
+
+      // 이벤트 스와이퍼 정지/재생 이벤트
 
       // 특별관 hover 이벤트 
       $(".specialhall-content ul li").mouseenter(function () { 
@@ -172,6 +184,58 @@
         </div>
       </div>
     </nav>
+    <div class="sub-menu">
+      <div class="container">
+        <ul>
+          <li>
+            <a href="#none" class="strong">영화</a>
+            <a href="#none">무비차트</a>
+            <a href="#none">아트하우스</a>
+            <a href="#none">ICECON</a>
+          </li>
+          <li>
+            <a href="#none" class="strong">극장</a>
+            <a href="#none">CGV 극장</a>
+            <a href="#none">특별관</a>
+          </li>
+          <li>
+            <a href="#none" class="strong">예매</a>
+            <a href="#none">빠른예매</a>
+            <a href="#none">상영스케줄</a>
+            <a href="#none">English Ticketing</a>
+            <a href="#none">English Schedule</a>
+          </li>
+          <li>
+            <a href="#none" class="strong">스토어</a>
+            <a href="#none">패키지</a>
+            <a href="#none">영화관람권</a>
+            <a href="#none">기프트카드</a>
+            <a href="#none">콤보</a>
+            <a href="#none">팝콘</a>
+            <a href="#none">음료</a>
+            <a href="#none">스낵</a>
+            <a href="#none">플레이존</a>
+            <a href="#none" class="arrowR">씨네샵</a>
+          </li>
+          <li>
+            <a href="#none" class="strong">이벤트</a>
+            <a href="#none">SPECIAL</a>
+            <a href="#none">영화/예매</a>
+            <a href="#none">멤버십/CLUB</a>
+            <a href="#none">CGV 극장별</a>
+            <a href="#none">제휴할인</a>
+            <a href="#none">당첨자 발표</a>
+            <a href="#none">종료된 이벤트</a>
+          </li>
+          <li>
+            <a href="#none" class="strong">혜택</a>
+            <a href="#none">CGV 할인정보</a>
+            <a href="#none">CLUB 서비스</a>
+            <a href="#none">VIP 라운지</a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="nav-fixed">
       <div class="container">
         <a href="#none">
@@ -205,12 +269,8 @@
         <p class="content-text">47년만에 공개 생중계 공포<br>사상 최악의 방송 사고!</p>
         <div class="video-controls">
           <a href="#none">상세보기</a>
-          <button type="button">
-            <img src="assets/img/pause.png" alt="재생버튼">
-          </button>
-          <button type="button">
-            <img src="assets/img/soundOn.png" alt="사운드온">
-          </button>
+          <button type="button" class="pause-btn"></button>
+          <button type="button"class="sound-btn"></button>
         </div>
       </div>
   </section>
@@ -615,16 +675,14 @@
       <div class="event-header">
         <p>EVENT</p>
         <div>
-          <button>
-            <img src="assets/img/stop.png" alt="정지버튼">
-          </button>
+          <button type="button" class="stop-btn"></button>
           <a href="#none">전체보기</a>
         </div>
       </div>
       <div class="event-content">
-        <div class="evevt-swiper">
+        <div class="event-swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide evevt-slide">
+            <div class="swiper-slide event-slide">
               <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/40413/17144588012630.jpg" alt="[혹성탈출-새로운시대]IMAX 포스터">
                 <strong>[혹성탈출-새로운시대]IMAX 포스터</strong>
@@ -638,28 +696,28 @@
                 <span>2024.04.30~2024.05.14</span>
               </a>
             </div>
-            <div class="swiper-slide evevt-slide">
+            <div class="swiper-slide event-slide">
               <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/40411/17144615086560.jpg" alt="[혹성탈출-새로운시대]SCREENX 포스터">
                 <strong>[혹성탈출-새로운시대]SCREENX 포스터</strong>
                 <span>2024.05.01~2024.05.14</span>
               </a>
             </div>
-            <div class="swiper-slide evevt-slide">
+            <div class="swiper-slide event-slide">
               <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/39599/17059006425860.jpg" alt="내 통신사 혜택 확인하고CGV 영화 할인 받자!">
                 <strong>내 통신사 혜택 확인하고CGV 영화 할인 받자!</strong>
                 <span>2024.02.01~2026.01.31</span>
               </a>
             </div>
-            <div class="swiper-slide evevt-slide">
+            <div class="swiper-slide event-slide">
               <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/40509/17152994005120.jpg" alt="[극장판 하이큐!!] IMAXN차 관람 이벤트">
                 <strong>[극장판 하이큐!!] IMAXN차 관람 이벤트</strong>
                 <span>2024.05.10~2024.05.21</span>
               </a>
             </div>
-            <div class="swiper-slide evevt-slide">
+            <div class="swiper-slide event-slide">
               <a href="#none">
                 <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/40338/17131432126120.jpg" alt="[MOINTSX인티N] 사유하는 목요일 (김호영)">
                 <strong>[MOINTSX인티N] 사유하는 목요일 (김호영)</strong>

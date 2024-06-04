@@ -27,6 +27,7 @@
 
 .header {
   /* height: 164px; */
+  position: relative;
 }
 
 .header .container {
@@ -173,6 +174,57 @@
   margin-right: 9px;
 }
 
+.header .sub-menu {
+  width: 100%;
+  position: absolute;
+  top: 163.69px;
+  left: 0;
+  background-color: #fff;
+  z-index: 5;
+}
+
+.header .sub-menu .container {
+  padding: 0;
+}
+
+.header .sub-menu .container  ul {
+  display: flex;
+}
+
+.header .sub-menu .container  ul li {
+  width: 162px;
+  padding: 17px 0px 28px 25px;
+  box-sizing: border-box;
+}
+
+.header .sub-menu .container  ul li:nth-of-type(1) {
+  width: 137px;
+  padding-left: 0;
+}
+
+.header .sub-menu .container  ul li a {
+  display: block;
+  font-size: 14px;
+  line-height: 2.143em;
+}
+
+.header .sub-menu .container  ul li a.strong {
+  font-weight: 700;
+  color: rgb(34, 34, 34);
+  line-height: 1.429em;
+  margin-bottom: 8px;
+}
+
+
+.header .sub-menu .container  ul li a.arrowR::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 9px;
+  background: transparent url(../img/arrowR_5x9.png) no-repeat center / 5px 9px;
+  margin-left: 4px;
+}
+
 /* //.header .nav-search */
 
 .header .nav-fixed {
@@ -277,6 +329,9 @@
   height: 100%;
 }
 
+/* //nav-fixed */
+
+
 /* //header */
 
 .video-wrap {
@@ -365,9 +420,12 @@
   margin-left: 10px;
 }
 
-.video-wrap .container .video-content .video-controls button img {
-  width: 18px;
-  height: 18px;
+.video-wrap .container .video-content .video-controls button.pause-btn {
+  background: url(../img/pause.png) no-repeat center / 18px;
+}
+
+.video-wrap .container .video-content .video-controls button.sound-btn {
+  background: url(../img/soundoff.png) no-repeat center / 18px;
 }
 
 /* //video-wrap */
@@ -698,9 +756,8 @@
   margin-right: 4px;
 }
 
-.event-wrap .container .event-header div button img {
-  width: 11px;
-  height: 15px;
+.event-wrap .container .event-header div button.stop-btn {
+  background: url(../img/stop.png) no-repeat center / 11px 15px;
 }
 
 .event-wrap .container .event-header div a {
@@ -722,7 +779,7 @@
   margin-top: 20px;
 }
 
-.event-wrap .container .event-content .evevt-swiper {
+.event-wrap .container .event-content .event-swiper {
   overflow: hidden;
 }
 
