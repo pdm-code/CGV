@@ -352,8 +352,76 @@
   height: 100%;
 }
 
+.header .nav-fixed .sub-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  border-bottom: 1px solid #a58e8e;
+}
+
+.header .nav-fixed .sub-menu .container {
+  align-items: flex-start;
+}
+
+
+.header .nav-fixed .sub-menu .container ul {
+  margin: 0;
+}
+
+.header .nav-fixed .sub-menu .container ul li {
+  padding: 13px 0 28px 25px;
+}
+
+.header .nav-fixed .sub-menu .container ul li a {
+  color: rgb(102, 102, 102);
+  display: block;
+  font-size: 14px;
+  line-height: 2.143em;
+  font-weight: 400;
+}
+
+.header .nav-fixed .sub-menu .container ul li a.strong {
+  font-weight: 700;
+  color: #222;
+  line-height: 1.429em;
+  margin-bottom: 8px;
+}
+
 /* //nav-fixed */
 
+.header .btn_ticketing_Wrap {
+  position: absolute;
+  right: 405px;
+  top: 780px;
+  display: flex;
+  gap: 10px;
+}
+
+.header .btn_ticketing_Wrap a.btn_ticketing {
+  width: 136px;
+  padding: 12px 0 14px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.500em;
+  background-image: linear-gradient(to left, rgb(255, 115, 86), rgb(251, 67, 87));
+  box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+  text-align: center;
+}
+
+.header .btn_ticketing_Wrap a.arrowU {
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  background: #fff url(https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png) no-repeat center / 15px 21px;
+}
+
+/* //btn_ticketing_Wrap */
 
 /* //header */
 
@@ -447,8 +515,16 @@
   background: url(../img/pause.png) no-repeat center / 18px;
 }
 
+.video-wrap .container .video-content .video-controls button.pause-btn.active {
+  background: url(../img/play.png) no-repeat center / 18px;
+}
+
 .video-wrap .container .video-content .video-controls button.sound-btn {
   background: url(../img/soundoff.png) no-repeat center / 18px;
+}
+
+.video-wrap .container .video-content .video-controls button.sound-btn.active {
+  background: url(../img/soundOn.png) no-repeat center / 18px;
 }
 
 /* //video-wrap */
@@ -780,7 +856,11 @@
 }
 
 .event-wrap .container .event-header div button.stop-btn {
-  background: url(../img/stop.png) no-repeat center / 11px 15px;
+  background: url(../img/stop.png) no-repeat center / 10px 15px;
+}
+
+.event-wrap .container .event-header div button.active {
+  background: transparent url(../img/playBlack.png) no-repeat 9px center / 11px 15px;
 }
 
 .event-wrap .container .event-header div a {

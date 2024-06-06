@@ -23,18 +23,42 @@
       
       //헤더 서브메뉴
       $(".nav-list a").mouseenter(function(){
-        $(".nav-wrap .sub-menu").slideDown();
+        $(".nav-wrap .sub-menu").stop().slideDown();
       });
       $(".nav-wrap").mouseleave(function(){
-        $(".nav-wrap .sub-menu").slideUp();
+        $(".nav-wrap .sub-menu").stop().slideUp();
       });
 
       //비디오 정지/재생 이벤트
+      $(".video-content .video-controls button.pause-btn").click(function(){
+        var video = $("video")
 
+        $(this).toggleClass("active");
 
+        if($(this).hasClass("active")) {
+          video.get(0).pause();
+        } else {
+          video.get(0).play();
+        };
+      });
 
+      //비디오 소리/음소거 이벤트
+      $(".video-content .video-controls button.sound-btn").click(function(){
+        var video = $("video")
+        
+        $(this).toggleClass("active");
 
+        if($(this).hasClass("active")) {
+          video.prop('muted', true);
+        } else {
+          video.prop('muted', false);
+        }
+      });
 
+      // 비디오 종료시 재생버튼 전환
+      $("video").on("ended", function(){
+        $(".video-content .video-controls button.pause-btn").addClass("active");
+      });
 
       // 무비차트
       var moviechartswiper = new Swiper('#moviechart-list', {
@@ -92,8 +116,16 @@
           } else {
             $(".nav-fixed").hide();
           }
-      });
+      });   
       
+      // nav-fixed 서브메뉴 
+      $(".nav-fixed").mouseenter(function(){
+        $(".nav-fixed .sub-menu").stop().slideDown();
+      });
+
+      $(".nav-fixed").mouseleave(function(){
+        $(".nav-fixed .sub-menu").stop().slideUp();
+      });
 
       // 이벤트 스와이퍼
       var eventswiper = new Swiper('.event-swiper', {
@@ -112,6 +144,15 @@
       });
 
       // 이벤트 스와이퍼 정지/재생 이벤트
+      $(".event-header .stop-btn").click(function(){
+        if(eventswiper.autoplay.running) {
+          eventswiper.autoplay.stop();
+          $(this).addClass("active");
+        } else {
+          eventswiper.autoplay.start();
+          $(this).removeClass("active");
+        }
+      });
 
       // 특별관 hover 이벤트 
       $(".specialhall-content ul li").mouseenter(function () { 
@@ -264,6 +305,62 @@
             <img src="assets/img/search_w.png" alt="검색">
           </button>
         </div>
+      </div>
+      <div class="sub-menu">
+        <div class="container">
+          <ul>
+            <li>
+              <a href="#none" class="strong">영화</a>
+              <a href="#none">무비차트</a>
+              <a href="#none">아트하우스</a>
+              <a href="#none">ICECON</a>
+            </li>
+            <li>
+              <a href="#none" class="strong">극장</a>
+              <a href="#none">CGV 극장</a>
+              <a href="#none">특별관</a>
+            </li>
+            <li>
+              <a href="#none" class="strong">예매</a>
+              <a href="#none">빠른예매</a>
+              <a href="#none">상영스케줄</a>
+              <a href="#none">English Ticketing</a>
+              <a href="#none">English Schedule</a>
+            </li>
+            <li>
+              <a href="#none" class="strong">스토어</a>
+              <a href="#none">패키지</a>
+              <a href="#none">영화관람권</a>
+              <a href="#none">기프트카드</a>
+              <a href="#none">콤보</a>
+              <a href="#none">팝콘</a>
+              <a href="#none">음료</a>
+              <a href="#none">스낵</a>
+              <a href="#none">플레이존</a>
+              <a href="#none" class="arrowR">씨네샵</a>
+            </li>
+            <li>
+              <a href="#none" class="strong">이벤트</a>
+              <a href="#none">SPECIAL</a>
+              <a href="#none">영화/예매</a>
+              <a href="#none">멤버십/CLUB</a>
+              <a href="#none">CGV 극장별</a>
+              <a href="#none">제휴할인</a>
+              <a href="#none">당첨자 발표</a>
+              <a href="#none">종료된 이벤트</a>
+            </li>
+            <li>
+              <a href="#none" class="strong">혜택</a>
+              <a href="#none">CGV 할인정보</a>
+              <a href="#none">CLUB 서비스</a>
+              <a href="#none">VIP 라운지</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="btn_ticketing_Wrap">
+        <a href="#none" class="btn_ticketing">예매하기</a>
+        <a href="#none" class="arrowU"></a>
       </div>
     </div>
   </header>
