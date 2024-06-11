@@ -391,11 +391,11 @@
 /* //nav-fixed */
 
 .header .btn_ticketing_Wrap {
-  position: absolute;
-  right: 405px;
-  top: 780px;
+  position: fixed;
+  right: calc(((100% - 980px) / 2 - 60px) ) ;
+  bottom: 80px;
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .header .btn_ticketing_Wrap a.btn_ticketing {
